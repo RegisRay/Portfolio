@@ -371,7 +371,7 @@ section .title::after {
   background: rgb(89, 216, 51);
 }
 .skills-content .right .html::before {
-  width: 90%;
+  width: 80%;
 }
 .skills-content .right .css::before {
   width: 60%;
