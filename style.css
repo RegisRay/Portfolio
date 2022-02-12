@@ -53,7 +53,7 @@ footer {
   justify-content: space-between;
 }
 .text-border {
-  text-shadow: 10px 10px 15px #111;
+  text-shadow: 10px 10px 15px #111, 10px 10px 15px #000;
 }
 section .title {
   position: relative;
