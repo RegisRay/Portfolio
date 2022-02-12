@@ -10,8 +10,32 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.11/typed.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"/>
-
+    <script type="text/javascript">
+        (function() {
+            // https://dashboard.emailjs.com/admin/integration
+            emailjs.init('user_oiWTxqPPDdaorxHRGKmjj');
+        })();
+    </script>
+     <script type="text/javascript">
+        window.onload = function() {
+            document.getElementById('contact-form').addEventListener('submit', function(event) {
+                event.preventDefault();
+                // generate a five digit number for the contact_number variable
+                // this.contact_number.value = Math.random() * 100000 | 0;
+                // these IDs from the previous steps
+                emailjs.sendForm('service_85r1c6o', 'contact_form', this)
+                    .then(function() {
+                        console.log('SUCCESS!');
+                        document.getElementById("contact-form").reset();
+                    }, function(error) {
+                        console.log('FAILED...', error);
+                    });
+            });
+            
+        }
+    </script>
 </head>
 <body>
     <div class="scroll-up-btn">
@@ -217,23 +241,20 @@
                 </div>
                 <div class="column right">
                     <div class="text">Message me</div>
-                    <form action="mailto:rregisraymond@gmail.com" method="POST" enctype="multipart/form-data">
+                    <form id="contact-form">
                         <div class="fields">
                             <div class="field name">
-                                <input type="text" placeholder="Name" required>
+                                <input name="from_name" type="text" placeholder="Name" required>
                             </div>
                             <div class="field email">
-                                <input type="email" placeholder="Email" required>
+                                <input name="email" type="email" placeholder="Email" required>
                             </div>
                         </div>
-                        <div class="field">
-                            <input type="text" placeholder="Subject" required>
-                        </div>
                         <div class="field textarea">
-                            <textarea cols="30" rows="10" placeholder="Message.." required></textarea>
+                            <textarea name="message" cols="30" rows="10" placeholder="Message.." required></textarea>
                         </div>
                         <div class="button-area">
-                            <button type="submit">Send message</button>
+                            <button type="submit" value="Send">Send Message</input>
                         </div>
                     </form>
                 </div>
